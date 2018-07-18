@@ -5,7 +5,7 @@ defmodule Sling.RoomController do
 
   plug Guardian.Plug.EnsureAuthenticated, handler: Sling.SessionController
 
-  def index(conn, params) do
+  def index(conn, _params) do
     rooms = Repo.all(Room)
     render(conn, "index.json", rooms: rooms)
   end

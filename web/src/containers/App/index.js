@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Miss } from 'react-router';
 import { connect } from 'react-redux';
-import { authenticate, unauthenticate } from '../../actions/session';
+import { authenticate, unauthenticate, logout } from '../../actions/session';
 import Home from '../Home';
 import NotFound from '../../components/NotFound';
 import Login from '../Login';
@@ -21,6 +21,7 @@ type Props = {
 }
 
 class App extends Component {
+  
   componentDidMount() {
     const token = localStorage.getItem('token');
 
@@ -68,5 +69,5 @@ export default connect(
     willAuthenticate: state.session.willAuthenticate,
     currentUserRooms: state.rooms.currentUserRooms,
   }),
-  { authenticate, unauthenticate, logut }
+  { authenticate, unauthenticate, logout }
 )(App);

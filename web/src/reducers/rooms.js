@@ -1,10 +1,10 @@
 const initialState = {
   all: [],
-  currentUserRooms = [],
-}
+  currentUserRooms: [],
+};
 
 export default function (state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case 'FETCH_ROOMS_SUCCESS':
       return {
         ...state,
@@ -27,7 +27,15 @@ export default function (state = initialState, action) {
           action.response.data,
         ],
       };
+    case 'ROOM_JOINED':
+      return {
+        ...state,
+        currentUserRooms: [
+          ...state.currentUserRooms,
+          action.response.data,
+        ],
+      };
     default:
-      return this.state;
+      return state;
   }
 }
